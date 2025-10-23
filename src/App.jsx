@@ -1,10 +1,14 @@
+import { Outlet } from "react-router";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-      <h1 className="bg-red-400 p-4">hello polash</h1>
-    </>
+    <div>
+      <Navbar />
+      <Outlet />
+      <footer>Footer</footer>
+    </div>
   );
 }
 
