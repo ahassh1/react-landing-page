@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaShoppingCart } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const navItems = [
   { path: "/", label: "Furniture" },
@@ -29,11 +30,25 @@ const NavItems = () => {
 };
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen((preState) => !preState);
+  };
+
   return (
     <header>
       <nav className="flex justify-between items-center py-6 px-4 container mx-auto max-w-screen-2xl">
         {/* logo */}
         <Link href="logo">logo</Link>
+
+        {/* hamburger menu for mobile device */}
+        <div
+          onClick={toggleMenu}
+          className="md:hidder cursor-pointer hover:text-orange-300"
+        >
+          {isMenuOpen ? <p>X</p> : <GiHamburgerMenu />}
+        </div>
+
         {/* desktop menu itmes  */}
         <div className="hidden md:block">
           <NavItems />
