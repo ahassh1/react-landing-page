@@ -59,9 +59,10 @@ const Navbar = () => {
 
         {/* mobile menu items  */}
         <div
-          className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-80 flex flex-col items-center justify-center space-y-8 text-white transition-transform transform ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          } md:hidden`}
+          className={`fixed top-0 left-0 w-full h-screen bg-black/80
+ flex flex-col items-center justify-center space-y-8 text-white transition-transform transform ${
+   isMenuOpen ? "translate-x-0" : "-translate-x-full"
+ } md:hidden`}
         >
           <div
             className="cursor-pointer absolute top-4 right-4"
