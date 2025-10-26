@@ -43,7 +43,7 @@ const Navbar = () => {
       <nav className="flex justify-between items-center py-6 px-4 container mx-auto max-w-screen-2xl">
         {/* logo */}
         <Link to="/" className="font-bold hover:text-orange-300">
-          FurnitureEnd
+          FurniEnd
         </Link>
 
         {/* hamburger menu for mobile device */}
