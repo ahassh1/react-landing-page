@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -32,13 +32,31 @@ const NavItems = ({ toggleMenu }) => {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen((preState) => !preState);
   };
 
+  // when scrolled apply bg color to navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition duration-300 ease-in-out text-white`}
+      className={`fixed top-0 left-0 right-0 z-50 transition duration-300 ease-in-out  ${
+        isScrolled ? "bg-white shadow-md" : "text-transparent text-white"
+      }`}
     >
       <nav className="flex justify-between items-center py-6 px-4 container mx-auto max-w-screen-2xl">
         {/* logo */}
