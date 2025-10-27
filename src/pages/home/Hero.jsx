@@ -34,7 +34,7 @@ const Hero = () => {
         {/* bottom blur effect  */}
         <div className="absolute inset-x-0 bottom-0 h-3/4 -mb-2 bg-gradient-to-t from-white via-transparent to-transparent blur-sm" />
 
-        {/* <BasicToolTip/> */}
+        {/* <ToolTip box/> */}
         <div className="hidden xl:block absolute bottom-40 left-24">
           <TooltipButton position="bottom" />
         </div>
