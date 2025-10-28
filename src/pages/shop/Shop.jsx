@@ -13,7 +13,7 @@ const Shop = () => {
       >
         <h1 className="text-4xl font-bold">Shop Our Product</h1>
       </div>
-      <Products />
+      <Products headline="What's Your Choice" />
     </section>
   );
 };

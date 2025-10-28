@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Hero />
       <WhyChoose />
-      <Products />
+      <Products headline="Best Selling Product" />
     </>
   );
 };
