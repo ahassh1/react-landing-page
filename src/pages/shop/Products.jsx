@@ -7,6 +7,7 @@ const Products = ({ headline }) => {
   const categories = ["Chair", "Beds", "Sofa", "Lamp"];
   const [selectedCategory, setSelectedCategory] = useState("Chair");
   const [visibleProducts, setVisibleProducts] = useState(4);
+
   const filteredProducts = products.filter(
     (product) => product.category === selectedCategory
   );
@@ -27,11 +28,11 @@ const Products = ({ headline }) => {
           <div className="flex flex-col sm:flex-row items-center md:justify-between justify-center gap-4">
             {categories.map((category) => (
               <button
+                key={category}
                 onClick={() => {
                   setSelectedCategory(category);
                   setVisibleProducts(4);
                 }}
-                key={category}
                 className={`py-1.5 sm:px-5 px-8 rounded-full hover:bg-orange-400 ${
                   selectedCategory === category
                     ? "bg-white text-orange-400"
@@ -45,13 +46,13 @@ const Products = ({ headline }) => {
         </div>
 
         {/* product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid justify-center item-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.slice(0, visibleProducts).map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
         </div>
 
-        {/* load more btn  */}
+        {/* load more button */}
         {visibleProducts < filteredProducts.length && (
           <div className="flex justify-center items-center md:mt-8 mt-5">
             <button
