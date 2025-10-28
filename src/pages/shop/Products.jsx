@@ -1,4 +1,6 @@
 import React from "react";
+import { products } from "../../utils/Products";
+import ProductCard from "./ProductCard";
 
 const Products = ({ headline }) => {
   const categories = ["Chair", "Beds", "Sofa", "Lamp"];
@@ -11,7 +13,7 @@ const Products = ({ headline }) => {
         </h2>
 
         {/* category tabs */}
-        <div className="bg-[#EEEEEE] max-w-md mx-auto sm:rounded-full md:p-2.5 py-5 mb-16">
+        <div className="bg-[#EEEEEE] max-w-md mx-auto sm:rounded-full md:p-2 py-5 sm:mb-8 mb-16">
           <div className="flex flex-col sm:flex-row items-center md:justify-between justify-center gap-4">
             {categories.map((category) => (
               <button
@@ -22,6 +24,13 @@ const Products = ({ headline }) => {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* product grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
         </div>
       </div>
     </div>
