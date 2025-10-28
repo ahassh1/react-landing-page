@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { products } from "../../utils/Products";
 import ProductCard from "./ProductCard";
+import buttonImg from "../../assets/button-icon.png";
 
 const Products = ({ headline }) => {
   const categories = ["Chair", "Beds", "Sofa", "Lamp"];
   const [selectedCategory, setSelectedCategory] = useState("Chair");
+  const [visibleProducts, setVisibleProducts] = useState(4);
   const filteredProducts = products.filter(
     (product) => product.category === selectedCategory
   );
+
+  const loadMoreProducts = () => {
+    setVisibleProducts((prev) => prev + 4);
+  };
 
   return (
     <div>
@@ -23,12 +29,13 @@ const Products = ({ headline }) => {
               <button
                 onClick={() => {
                   setSelectedCategory(category);
+                  setVisibleProducts(4);
                 }}
                 key={category}
                 className={`py-1.5 sm:px-5 px-8 rounded-full hover:bg-orange-400 ${
                   selectedCategory === category
                     ? "bg-white text-orange-400"
-                    : ""
+                    : "text-black"
                 }`}
               >
                 {category}
@@ -39,10 +46,23 @@ const Products = ({ headline }) => {
 
         {/* product grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product, index) => (
+          {filteredProducts.slice(0, visibleProducts).map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
         </div>
+
+        {/* load more btn  */}
+        {visibleProducts < filteredProducts.length && (
+          <div className="flex justify-center items-center md:mt-8 mt-5">
+            <button
+              onClick={loadMoreProducts}
+              className="flex text-base font-semibold items-center gap-1"
+            >
+              <p className="text-orange-400">View more</p>
+              <img src={buttonImg} alt="button-img" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
